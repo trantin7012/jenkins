@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage("Build"){
             steps {
-                sh "Hello devOps 2022"
+                sh "echo hello"
             }
         }
     }
