@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage("Build image"){
             steps{
-                sh 'sudo docker build . -t trantin7012/testjenkin'
+                sh 'docker build . -t trantin7012/testjenkin'
             }
         }
         stage("push image"){
            steps{
-                sh'sudo docker push trantin7012/testjenkin'
+                sh 'docker push trantin7012/testjenkin'
            }
         }
         stage("Build"){
