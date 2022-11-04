@@ -2,12 +2,14 @@ pipeline {
     agent any
     stages {
         stage("Build image"){
-            dockerImage = docker.build("trantin7012/testjenkin:latest")
+            steps{
+                sh 'docker build -t trantin7012/testjenkin'
+            }
         }
         stage("push image"){
-            withDockerRegistry([credentialsId:"docker-hub-credential",url:""])
-            {dockerImage.push()
-            }
+           steps{
+                sh'docker push trantin7012/testjenkin'
+           }
         }
         stage("Build"){
             steps {
