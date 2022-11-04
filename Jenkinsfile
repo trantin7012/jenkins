@@ -21,6 +21,11 @@ pipeline {
            }
 
         }
+        stage("docker run"){
+            sh 'docker pull trantin7012/testjenkin'
+            sh 'docker run trantin7012/testjenkin -d -p 8080:80'
+            
+        }
         stage("Build"){
             steps {
                 sh "echo hello"
