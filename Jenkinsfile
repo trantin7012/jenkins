@@ -19,12 +19,6 @@ pipeline {
                 sh 'docker push trantin7012/testjenkin'
                 sh 'docker image rm trantin7012/testjenkin'
            }
-
-        }
-        stage("docker run"){
-            sh 'docker pull trantin7012/testjenkin'
-            sh 'docker run trantin7012/testjenkin -d -p 8080:80'
-            
         }
         stage("Build"){
             steps {
