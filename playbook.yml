@@ -1,5 +1,5 @@
 ---
-- hosts: server
+- hosts: 54.86.137.3
   remote_user: ubuntu
   become: yes
   tasks:
