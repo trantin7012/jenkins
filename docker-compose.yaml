@@ -3,4 +3,4 @@ services:
   app:
     image: trantin7012/testjenkin:latest
     ports:
-      - "88:88"
+      - "80:88"
