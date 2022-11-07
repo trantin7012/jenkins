@@ -20,6 +20,13 @@ pipeline {
                 sh 'docker image rm trantin7012/testjenkin'
            }
         }
+        stage("deploy"){
+            options {
+                timeout(time: 10, unit: 'MINUTES')
+            }
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-credential', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) 
+        }
         stage("Build"){
             steps {
                 sh "echo hello"
