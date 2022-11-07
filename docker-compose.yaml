@@ -1,6 +1,6 @@
 version: "3.3"
 services:
   app:
-    image: ddthuong/nginx:latest
+    image: trantin7012/testjenkin:latest
     ports:
       - "80:80"

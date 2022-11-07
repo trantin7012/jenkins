@@ -22,7 +22,20 @@ pipeline {
         }
         stage("deploy"){
             steps {
-                withCredentials([usernamePassword(credentialsId: 'docker-hub-credential', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) 
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-credential', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')])
+                {
+                    ansiblePlaybook(
+                        credentialsId: 'private_key',
+                        playbook: 'playbook.yml',
+                        inventory: 'hosts',
+                        become: 'yes',
+                        extraVars: [
+                            DOCKER_USERNAME: "${DOCKER_USERNAME}",  
+                            DOCKER_PASSWORD: "${DOCKER_PASSWORD}" 
+                        ]
+                    )
+                }
+
             }
         }
         stage("Build"){
