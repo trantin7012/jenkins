@@ -21,9 +21,6 @@ pipeline {
            }
         }
         stage("deploy"){
-            options {
-                timeout(time: 10, unit: 'MINUTES')
-            }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker-hub-credential', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) 
             }
